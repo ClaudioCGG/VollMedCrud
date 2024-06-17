@@ -1,0 +1,106 @@
+Nota:
+
+// Json de Prueba Datos Registro Paciente:
+
+{
+  "nombre": "Maria Gomez",
+  "email": "maria.gomez@example.com",
+  "telefono": "123456789",
+  "documentoIdentidad": "A1234567",
+  "direccion": {
+    "calle": "Av. Principal",
+    "distrito": "Centro",
+    "ciudad": "Ciudad Ejemplo",
+    "numero": "123",
+    "complemento": "Apto 4B"
+  }
+}
+
+// Json de Prueba Datos Medico:
+
+{
+  "nombre": "Juan Perez",
+  "email": "juan.perez@example.com",
+  "documento": "12345678",
+  "especialidad": "CARDIOLOGIA",
+    "direccion": {
+      "calle": "Av. Principal",
+      "distrito": "Centro",
+      "ciudad": "Ciudad Ejemplo",
+      "numero": "123",
+      "complemento": "Apto 4B"
+    }
+}
+
+
+INSERT INTO pacientes (nombre, telefono, email, documento_identidad, calle, distrito, complemento, numero, ciudad)
+VALUES ('Alide Yanina Maradey', '1166797988', 'yanina.maradey@gmail.com', '29766531', 'Jean Jaures', 'Balvanera', '6A', '964', 'CABA');
+
+// Para solucionar el error en el schema sql de mi base de datos
+DELETE FROM flyway_schema_history WHERE installed_rank = 1;
+
+
+// @NotBlank y NotNull not blank hace lo mismo que no not null.
+
+//validation recordar que una vez implementadas las validaciones debemos, en el Controller del Objeto,  sumar la anotacion @Valid en el parametro body del json que se recibe.
+// en los objetos y en los enums la annotation debe ser not null, en cambio en campos de no objetos debe ser not blank
+ademas  en los objetos debo sumar @Valid para que valide con la clase que hereda los atributos validados con la annotation
+Validaciones a nivel API para generar errores API 400, a nivel pyload de json y no de la base de datos, es decir
+ir bajando a nivel API las validaciones que correspondan ya que a nivel BBDD, un errror 500 puede ser cualquier cosa
+por supuesto que hay validaciones que deben ser a nivel BBDD como si el cliente ya existe o demas...
+
+// REVISAR LAS EXPRESIONES REGULARES
+Por supuesto, aquí tienes un resumen de las principales expresiones regulares que puedes aplicar en Java, junto con ejemplos básicos de cómo usarlas:
+
+
+Coincidencia básica de texto:
+
+Patrón: pattern
+Uso: Coincide exactamente con el texto "pattern".
+Ejemplo: String regex = "pattern";
+Cuantificadores básicos:
+
+Patrón: a{2,4}
+Uso: Coincide con "a" de 2 a 4 veces.
+Ejemplo: String regex = "a{2,4}"; coincidir con "aa", "aaa" o "aaaa".
+Clases de caracteres:
+
+Patrón: [abc]
+Uso: Coincide con cualquiera de los caracteres dentro de los corchetes.
+Ejemplo: String regex = "[abc]"; coincidir con "a", "b" o "c".
+Negación de clases de caracteres:
+
+Patrón: [^abc]
+Uso: Coincide con cualquier carácter que no esté dentro de los corchetes.
+Ejemplo: String regex = "[^abc]"; coincide con cualquier carácter excepto "a", "b" o "c".
+Clases predefinidas:
+
+Patrón: \d
+Usar: Coincide con un dígito.
+Ejemplo: String regex = "\\d"; coincide con cualquier dígito del 0 al 9.
+Negación de clases predefinidas:
+
+Patrón: \D
+Uso: Coincide con cualquier cosa excepto un dígito.
+Ejemplo: String regex = "\\D"; coincide con cualquier carácter que no sea un dígito.
+Anclas de inicio y fin:
+
+Patrón: ^pattern$
+Uso: Coincide con "pattern" solo si está al principio (^) y al final ($) del texto.
+Ejemplo: String regex = "^pattern$"; solo coincide con la cadena exacta "pattern".
+Cuantificadores de repetición:
+
+Patrón: a+
+Uso: Coincide con "a" una o más veces.
+Ejemplo: String regex = "a+"; coincidir con "a", "aa", "aaa", etc.
+Grupos y captura:
+
+Patrón: (pattern)
+Uso: Agrupa patrones para aplicar cuantificadores o para capturar subcadenas.
+Ejemplo: String regex = "(\\d+)"; captura cualquier secuencia de dígitos como un grupo.
+Escape de caracteres especiales:
+
+Patrón: \$
+Uso: Escapa caracteres especiales para que sean interpretados literalmente.
+Ejemplo: String regex = "\\$"; coincide con el símbolo "$".
+Estas son algunas de las expresiones regulares más comunes que puedes utilizar en Java para validar, buscar o manipular cadenas de texto según ciertos patrones. Recuerda que en Java, las cadenas de expresiones regulares deben escaparse adecuadamente, lo que significa que los caracteres de escape como \ deben escribirse como \\ en las cadenas de Java.
